@@ -10,7 +10,7 @@ function PizzaContainer(props) {
       <p>
         <strong>pizzas popped: 🍕{props.numPizzas}🍕</strong>
       </p>
-      <button className="block" onClick={props.makePizza}>
+      <button onClick={props.makePizza}>
         <img className="img" src={Pizza} />
       </button>
     </div>

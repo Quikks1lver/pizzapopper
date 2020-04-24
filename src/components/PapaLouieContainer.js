@@ -3,6 +3,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { makePizza, buyPizza } from "../redux/index";
+import Louie from "../pictures/louie.jpeg";
 
 function PapaLouieContainer() {
   const pizzas = useSelector((state) => state.numPizzas);
@@ -14,8 +15,8 @@ function PapaLouieContainer() {
         Papa Louie can help you out! He makes a pizza every 10 seconds. Hire
         clones of him to help you out!
       </p>
-      <button onClick={() => dispatch(buyPizza(10))}>
-        HIRE PAPA LOUIE(S)!
+      <button className="button" onClick={() => dispatch(buyPizza(10))}>
+        <img className="img" src={Louie} />
       </button>
     </div>
   );
