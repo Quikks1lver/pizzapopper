@@ -8,6 +8,10 @@ function yeetPizzas() {
   return <PizzaContainer />;
 }
 
+function louie() {
+  return <PapaLouieContainer />;
+}
+
 function winner() {
   return (
     <h1 style={{ color: "blue", fontFamily: "monospace" }}>
@@ -28,6 +32,16 @@ function tbd() {
   return <h3>~~~ TO BE UNLOCKED ~~~</h3>;
 }
 
+function revealHelper(numPizzas, helper = 0, threshold, callback) {
+  return numPizzas > threshold
+    ? callback
+    : numPizzas >= 0
+    ? helper > 0
+      ? helper
+      : tbd()
+    : loser();
+}
+
 function EverythingContainer(props) {
   return (
     <div className="grid-container">
@@ -39,13 +53,7 @@ function EverythingContainer(props) {
           : winner()}
       </div>
       <div className="grid-item">
-        {props.numPizzas > 10 ? (
-          <PapaLouieContainer />
-        ) : props.numPizzas >= 0 ? (
-          tbd()
-        ) : (
-          loser()
-        )}
+        {revealHelper(props.numPizzas, 0, 10, louie())}
       </div>
     </div>
   );
