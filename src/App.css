@@ -2,6 +2,7 @@ body {
   background-color: orangered;
 }
 
+/* Contains code for everything container */
 /* Grid Styling, from W3Schools */
 .grid-container {
   display: grid;

@@ -11,12 +11,7 @@ function App() {
     <Provider store={store}>
       <div>
         <Header />
-        <div className="grid-container">
-        <div className="grid-item"> <EverythingContainer /> </div>
-          <div className="grid-item"> hello </div>
-          <div className="grid-item"> hello2 </div>
-          <div className="grid-item"> hello3 </div>
-        </div>
+        <EverythingContainer />
       </div>
     </Provider>
   );

@@ -22,16 +22,6 @@ const imageStyle = {
    height: "20%"
 }
 
-function winner(props)
-{
-   if (props.numPizzas > 10)
-   {
-      return (
-         <h1>YOU WON!</h1>
-      )
-   }
-}
-
 function PizzaContainer(props) {
    return (
       <div>
@@ -39,7 +29,6 @@ function PizzaContainer(props) {
          <button style={blockStyle} onClick={props.makePizza}>
             <img style={imageStyle} src={Pizza}/>
          </button>
-         {winner(props)}
       </div>
    )
 }
