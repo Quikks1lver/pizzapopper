@@ -16,14 +16,36 @@ function winner() {
   );
 }
 
+function loser() {
+  return (
+    <h1 style={{ color: "pink", fontFamily: "monospace" }}>
+      🤡🤡🤡🤡🤡 YOU LOST! 🤡🤡🤡🤡🤡
+    </h1>
+  );
+}
+
+function tbd() {
+  return <h3>~~~ TO BE UNLOCKED ~~~</h3>;
+}
+
 function EverythingContainer(props) {
   return (
     <div className="grid-container">
       <div className="grid-item">
-        {props.numPizzas < 10 ? yeetPizzas() : winner()}
+        {props.numPizzas < 30
+          ? props.numPizzas < 0
+            ? loser()
+            : yeetPizzas()
+          : winner()}
       </div>
       <div className="grid-item">
-        <PapaLouieContainer />
+        {props.numPizzas > 10 ? (
+          <PapaLouieContainer />
+        ) : props.numPizzas >= 0 ? (
+          tbd()
+        ) : (
+          loser()
+        )}
       </div>
     </div>
   );

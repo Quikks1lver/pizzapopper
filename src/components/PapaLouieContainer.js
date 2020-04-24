@@ -1,30 +1,24 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { makePizza, buyPizza } from "../redux/index";
-import { connect } from "react-redux";
+// I used hooks instead of the connect() method to access the store and dispatch methods.
 
-function PapaLouieContainer(props) {
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { makePizza, buyPizza } from "../redux/index";
+
+function PapaLouieContainer() {
   const pizzas = useSelector((state) => state.numPizzas);
+  const dispatch = useDispatch();
 
   return (
     <div>
-      <p> {props.numPizzas} </p>
-      {/* <button onClick={props.buyPizza()}> hello </button> */}
+      <p>
+        Papa Louie can help you out! He makes a pizza every 10 seconds. Hire
+        clones of him to help you out!
+      </p>
+      <button onClick={() => dispatch(buyPizza(10))}>
+        HIRE PAPA LOUIE(S)!
+      </button>
     </div>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    numPizzas: state.numPizzas,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    makePizza: () => dispatch(makePizza()),
-    buyPizza: () => dispatch(buyPizza()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PapaLouieContainer);
+export default PapaLouieContainer;
