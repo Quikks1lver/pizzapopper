@@ -4,6 +4,8 @@ import PizzaContainer from "./PizzaContainer";
 import PapaLouieContainer from "./PapaLouieContainer";
 import "../App.css";
 
+const LOUIE_THRESHOLD = 3;
+
 function yeetPizzas() {
   return <PizzaContainer />;
 }
@@ -32,12 +34,21 @@ function tbd() {
   return <h3>~~~ TO BE UNLOCKED ~~~</h3>;
 }
 
-function revealHelper(numPizzas, helper = 0, threshold, callback) {
+function displayHelperCount(name, helperCount) {
+  return (
+    <h3>
+      {" "}
+      ~~~ You have {helperCount} {name} helper(s). ~~~{" "}
+    </h3>
+  );
+}
+
+function revealHelper(numPizzas, helperCount = 0, threshold, name, callback) {
   return numPizzas > threshold
     ? callback
     : numPizzas >= 0
-    ? helper > 0
-      ? helper
+    ? helperCount > 0
+      ? displayHelperCount(name, helperCount)
       : tbd()
     : loser();
 }
@@ -46,14 +57,20 @@ function EverythingContainer(props) {
   return (
     <div className="grid-container">
       <div className="grid-item">
-        {props.numPizzas < 30
+        {props.numPizzas < 50
           ? props.numPizzas < 0
             ? loser()
             : yeetPizzas()
           : winner()}
       </div>
       <div className="grid-item">
-        {revealHelper(props.numPizzas, 0, 10, louie())}
+        {revealHelper(
+          props.numPizzas,
+          props.numLouies,
+          LOUIE_THRESHOLD,
+          "Papa Louie",
+          louie()
+        )}
       </div>
     </div>
   );
@@ -61,7 +78,8 @@ function EverythingContainer(props) {
 
 const mapStateToProps = (state) => {
   return {
-    numPizzas: state.numPizzas,
+    numPizzas: state.pizza.numPizzas,
+    numLouies: state.louie.numLouies,
   };
 };
 

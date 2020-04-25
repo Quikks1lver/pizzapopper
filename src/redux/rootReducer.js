@@ -1,8 +1,10 @@
-import { combineReducers } from 'redux';
-import pizzaReducer from './pizza/pizzaReducer';
+import { combineReducers } from "redux";
+import pizzaReducer from "./pizza/pizzaReducer";
+import louieReducer from "./louie/louieReducer";
 
 const rootReducer = combineReducers({
-   pizza: pizzaReducer
-})
+  pizza: pizzaReducer,
+  louie: louieReducer,
+});
 
-export default pizzaReducer;
+export default rootReducer;

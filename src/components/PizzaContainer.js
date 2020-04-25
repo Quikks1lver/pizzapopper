@@ -19,7 +19,7 @@ function PizzaContainer(props) {
 
 const mapStateToProps = (state) => {
   return {
-    numPizzas: state.numPizzas,
+    numPizzas: state.pizza.numPizzas,
   };
 };
 
