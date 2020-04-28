@@ -9,7 +9,15 @@ const TIME_TARGET = 1000;
 function louieMakesPizzas({ numLouies, makePizza }) {
   clearInterval(louieMakesPizzas);
   if (numLouies > 0) {
-    const time = TIME_TARGET - 5 * numLouies;
+    const time = TIME_TARGET - 1 * numLouies;
+    setTimeout(() => makePizza(), time);
+  }
+}
+
+function rocketMakesTrips({ numPlanets, makePizza }) {
+  clearInterval(rocketMakesTrips);
+  if (numPlanets > 0) {
+    const time = TIME_TARGET - 5 * numPlanets;
     setTimeout(() => makePizza(), time);
   }
 }
@@ -35,10 +43,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    makePizza: () => dispatch(makePizza()),
-  };
+const mapDispatchToProps = {
+  makePizza: () => makePizza(),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PizzaContainer);

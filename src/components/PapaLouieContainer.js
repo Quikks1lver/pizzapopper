@@ -4,29 +4,27 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { makePizza, buyPizza, hireLouie } from "../redux/index";
 import Louie from "../pictures/louie.jpeg";
-
-const PAPA_LOUIE_COST = 3;
+import { LOUIE_CAP, LOUIE_COST } from "../thresholds";
 
 function PapaLouieContainer() {
-  const numPizzas = useSelector((state) => state.pizza.numPizzas);
   const numLouies = useSelector((state) => state.louie.numLouies);
   const dispatch = useDispatch();
 
   // Working code
   const handleClick = () => {
-    if (numLouies < 101) {
-      dispatch(buyPizza(PAPA_LOUIE_COST));
+    if (numLouies < LOUIE_CAP) {
+      dispatch(buyPizza(LOUIE_COST));
       dispatch(hireLouie());
     }
   };
 
   return (
     <div>
-      <p>Hire Papa Louie to help you out! (cap: 200)</p>
-      <p>{numLouies} Louie(s) are baking pizza.</p>
+      <p>Hire Papa Louie to help you out! (cap: {LOUIE_CAP})</p>
       <button className="button" onClick={() => handleClick()}>
         <img className="img" src={Louie} />
       </button>
+      <p>{numLouies} Louie(s) are baking pizza.</p>
     </div>
   );
 }

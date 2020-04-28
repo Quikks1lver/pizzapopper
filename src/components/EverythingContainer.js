@@ -2,10 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import PizzaContainer from "./PizzaContainer";
 import PapaLouieContainer from "./PapaLouieContainer";
+import PlanetContainer from "./PlanetContainer";
+import { TARGET_SCORE, LOUIE_THRESHOLD, PLANET_THRESHOLD } from "../thresholds";
 import "../App.css";
-
-const LOUIE_THRESHOLD = 3;
-const TARGET_SCORE = 50;
 
 function yeetPizzas() {
   return <PizzaContainer />;
@@ -13,6 +12,10 @@ function yeetPizzas() {
 
 function louie() {
   return <PapaLouieContainer />;
+}
+
+function planet() {
+  return <PlanetContainer />;
 }
 
 function winner() {
@@ -56,6 +59,7 @@ function revealHelper(numPizzas, helperCount = 0, threshold, name, callback) {
 
 function EverythingContainer(props) {
   return (
+    // Button
     <div className="grid-container">
       <div className="grid-item">
         {props.numPizzas < TARGET_SCORE
@@ -64,6 +68,8 @@ function EverythingContainer(props) {
             : yeetPizzas()
           : winner()}
       </div>
+
+      {/* Louie */}
       <div className="grid-item">
         {props.numPizzas < TARGET_SCORE
           ? revealHelper(
@@ -75,6 +81,19 @@ function EverythingContainer(props) {
             )
           : winner()}
       </div>
+
+      {/* Pizza Planet */}
+      <div className="grid-item">
+        {props.numPizzas < TARGET_SCORE
+          ? revealHelper(
+              props.numPizzas,
+              props.numPlanets,
+              PLANET_THRESHOLD,
+              "Pizza Planet",
+              planet()
+            )
+          : winner()}
+      </div>
     </div>
   );
 }
@@ -83,6 +102,7 @@ const mapStateToProps = (state) => {
   return {
     numPizzas: state.pizza.numPizzas,
     numLouies: state.louie.numLouies,
+    numPlanets: state.planet.numPlanets,
   };
 };
 
