@@ -6,7 +6,6 @@ import { makePizza, buyPizza, hireLouie } from "../redux/index";
 import Louie from "../pictures/louie.jpeg";
 
 const PAPA_LOUIE_COST = 3;
-const PAPA_LOUIE_RATE = 1;
 
 function PapaLouieContainer() {
   const numPizzas = useSelector((state) => state.pizza.numPizzas);

@@ -9,7 +9,7 @@ const TIME_TARGET = 1000;
 function louieMakesPizzas({ numLouies, makePizza }) {
   clearInterval(louieMakesPizzas);
   if (numLouies > 0) {
-    const time = 1000 - 5 * numLouies;
+    const time = TIME_TARGET - 5 * numLouies;
     setTimeout(() => makePizza(), time);
   }
 }
