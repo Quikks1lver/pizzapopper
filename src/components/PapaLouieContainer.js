@@ -6,7 +6,7 @@ import { makePizza, buyPizza, hireLouie } from "../redux/index";
 import Louie from "../pictures/louie.jpeg";
 
 const PAPA_LOUIE_COST = 3;
-const PAPA_LOUIE_RATE = 2;
+const PAPA_LOUIE_RATE = 1;
 
 function PapaLouieContainer() {
   const numPizzas = useSelector((state) => state.pizza.numPizzas);
@@ -15,22 +15,16 @@ function PapaLouieContainer() {
 
   // Working code
   const handleClick = () => {
-    dispatch(buyPizza(PAPA_LOUIE_COST));
-    dispatch(hireLouie());
-  };
-
-  const doit = () => {
-    if (numLouies > 0) {
-      setTimeout(() => dispatch(makePizza(PAPA_LOUIE_RATE)), 2500);
+    if (numLouies < 101) {
+      dispatch(buyPizza(PAPA_LOUIE_COST));
+      dispatch(hireLouie());
     }
   };
 
   return (
     <div>
-      <p>
-        Papa Louie can help you out! He makes a pizza every 10 seconds. Hire
-        clones of him to help you out! {doit()}
-      </p>
+      <p>Hire Papa Louie to help you out! (cap: 200)</p>
+      <p>{numLouies} Louie(s) are baking pizza.</p>
       <button className="button" onClick={() => handleClick()}>
         <img className="img" src={Louie} />
       </button>

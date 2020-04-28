@@ -5,6 +5,7 @@ import PapaLouieContainer from "./PapaLouieContainer";
 import "../App.css";
 
 const LOUIE_THRESHOLD = 3;
+const TARGET_SCORE = 50;
 
 function yeetPizzas() {
   return <PizzaContainer />;
@@ -17,7 +18,7 @@ function louie() {
 function winner() {
   return (
     <h1 style={{ color: "blue", fontFamily: "monospace" }}>
-      🍕🍕🍕🍕🍕 YOU WON! 🍕🍕🍕🍕🍕{" "}
+      🍕🍕🍕 YOU WON! {TARGET_SCORE} PIZZAS! 🍕🍕🍕
     </h1>
   );
 }
@@ -57,20 +58,22 @@ function EverythingContainer(props) {
   return (
     <div className="grid-container">
       <div className="grid-item">
-        {props.numPizzas < 50
+        {props.numPizzas < TARGET_SCORE
           ? props.numPizzas < 0
             ? loser()
             : yeetPizzas()
           : winner()}
       </div>
       <div className="grid-item">
-        {revealHelper(
-          props.numPizzas,
-          props.numLouies,
-          LOUIE_THRESHOLD,
-          "Papa Louie",
-          louie()
-        )}
+        {props.numPizzas < TARGET_SCORE
+          ? revealHelper(
+              props.numPizzas,
+              props.numLouies,
+              LOUIE_THRESHOLD,
+              "Papa Louie",
+              louie()
+            )
+          : winner()}
       </div>
     </div>
   );
