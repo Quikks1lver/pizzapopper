@@ -18,17 +18,17 @@ export function planet() {
 
 export function winner() {
   return (
-    <h1 style={{ color: "blue", fontFamily: "monospace" }}>
+    <h2 style={{ color: "blue", fontFamily: "monospace" }}>
       🍕🍕🍕 YOU WON! {TARGET_SCORE} PIZZAS! 🍕🍕🍕
-    </h1>
+    </h2>
   );
 }
 
 export function loser() {
   return (
-    <h1 style={{ color: "pink", fontFamily: "monospace" }}>
+    <h2 style={{ color: "pink", fontFamily: "monospace" }}>
       🤡🤡🤡🤡🤡 YOU LOST! 🤡🤡🤡🤡🤡
-    </h1>
+    </h2>
   );
 }
 

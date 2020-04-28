@@ -7,18 +7,16 @@ import "../App.css";
 const TIME_TARGET = 1000;
 
 function louieMakesPizzas({ numLouies, makePizza }) {
-  clearTimeout(yeo);
   if (numLouies > 0) {
     const time = TIME_TARGET - 1 * numLouies;
-    var yeo = setTimeout(() => makePizza(), time);
+    return setTimeout(() => makePizza(), time);
   }
 }
 
 function rocketMakesTrips({ numPlanets, makePizza }) {
-  clearTimeout(yeo2);
   if (numPlanets > 0) {
     const time = TIME_TARGET - 5 * numPlanets;
-    var yeo2 = setTimeout(() => makePizza(), time);
+    return setTimeout(() => makePizza(), time);
   }
 }
 
