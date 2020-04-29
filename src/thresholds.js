@@ -10,4 +10,4 @@ export const PLANET_THRESHOLD = 200;
 export const PLANET_CAP = 100;
 export const PLANET_COST = 100;
 
-export const TARGET_SCORE = 500;
+export const TARGET_SCORE = 1000;
