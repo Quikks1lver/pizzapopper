@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div>
       <p>
-        <em> A game created by Adam Fernandes. </em>
+        <em> A game created by Adam Fernandes, 2020.</em>
       </p>
     </div>
   );

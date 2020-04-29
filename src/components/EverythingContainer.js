@@ -14,8 +14,7 @@ import "../App.css";
 function displayHelperCount(name, helperCount) {
   return (
     <h3>
-      {" "}
-      ~~~ You have {helperCount} {name} helper(s). ~~~{" "}
+      ~~~ You have {helperCount} {name} helper(s). ~~~
     </h3>
   );
 }
