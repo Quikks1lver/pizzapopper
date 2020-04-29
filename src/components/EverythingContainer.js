@@ -1,9 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
-import { TARGET_SCORE, LOUIE_THRESHOLD, PLANET_THRESHOLD } from "../thresholds";
+import {
+  TARGET_SCORE,
+  LOUIE_THRESHOLD,
+  PLANET_THRESHOLD,
+  WIZARD_THRESHOLD,
+} from "../thresholds";
 import {
   yeetPizzas,
   louie,
+  wizard,
   planet,
   winner,
   loser,
@@ -54,6 +60,19 @@ function EverythingContainer(props) {
           : winner()}
       </div>
 
+      {/* Wizard Container */}
+      <div className="grid-item">
+        {props.numPizzas < TARGET_SCORE
+          ? revealHelper(
+              props.numPizzas,
+              props.numWizards,
+              WIZARD_THRESHOLD,
+              "Cheez Wizard",
+              wizard()
+            )
+          : winner()}
+      </div>
+
       {/* Pizza Planet */}
       <div className="grid-item">
         {props.numPizzas < TARGET_SCORE
@@ -75,6 +94,7 @@ const mapStateToProps = (state) => {
     numPizzas: state.pizza.numPizzas,
     numLouies: state.louie.numLouies,
     numPlanets: state.planet.numPlanets,
+    numWizards: state.wizard.numWizards,
   };
 };
 

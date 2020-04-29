@@ -8,6 +8,7 @@ import "../App.css";
 const TIME_TARGET = 1000;
 var louieIntervals = [];
 var planetIntervals = [];
+var wizardIntervals = [];
 
 function louieMakesPizzas({ numLouies, makePizza }) {
   if (numLouies > 0) {
@@ -18,10 +19,19 @@ function louieMakesPizzas({ numLouies, makePizza }) {
   }
 }
 
+function wizardCastsSpells({ numWizards, makePizza }) {
+  if (numWizards > 0) {
+    wizardIntervals.forEach(clearTimeout);
+    const time = TIME_TARGET - 5 * numWizards;
+    const repeat3 = setInterval(() => makePizza(), time);
+    wizardIntervals.push(repeat3);
+  }
+}
+
 function rocketMakesTrips({ numPlanets, makePizza }) {
   if (numPlanets > 0) {
     planetIntervals.forEach(clearTimeout);
-    const time = TIME_TARGET - 5 * numPlanets;
+    const time = TIME_TARGET - 10 * numPlanets;
     const repeat2 = setInterval(() => makePizza(), time);
     planetIntervals.push(repeat2);
   }
@@ -30,8 +40,9 @@ function rocketMakesTrips({ numPlanets, makePizza }) {
 function PizzaContainer(props) {
   const dispatch = useDispatch();
 
-  useEffect(() => louieMakesPizzas(props), [props.numLouies]);
-  useEffect(() => rocketMakesTrips(props), [props.numPlanets]);
+  useEffect(() => louieMakesPizzas(props), [props.numLouies]); // updates Louie timer
+  useEffect(() => rocketMakesTrips(props), [props.numPlanets]); // updates planet timer
+  useEffect(() => wizardCastsSpells(props), [props.numWizards]); // updates wizard timer
 
   return (
     <div>
@@ -50,6 +61,7 @@ const mapStateToProps = (state) => {
     numPizzas: state.pizza.numPizzas,
     numLouies: state.louie.numLouies,
     numPlanets: state.planet.numPlanets,
+    numWizards: state.wizard.numWizards,
   };
 };
 

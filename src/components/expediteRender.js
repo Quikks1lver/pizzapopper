@@ -2,6 +2,7 @@ import React from "react";
 import PizzaContainer from "./PizzaContainer";
 import PapaLouieContainer from "./PapaLouieContainer";
 import PlanetContainer from "./PlanetContainer";
+import WizardContainer from "./WizardContainer";
 import { TARGET_SCORE } from "../thresholds";
 
 export function yeetPizzas() {
@@ -10,6 +11,10 @@ export function yeetPizzas() {
 
 export function louie() {
   return <PapaLouieContainer />;
+}
+
+export function wizard() {
+  return <WizardContainer />;
 }
 
 export function planet() {
