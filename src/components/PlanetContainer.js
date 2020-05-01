@@ -25,7 +25,7 @@ function PlanetContainer() {
         pizza production! (cap: {PLANET_CAP})
       </p>
       <button className="button" onClick={() => handleClick()}>
-        <img className="img" src={Planet} />
+        <img className="img" alt="Pizza Planet" src={Planet} />
       </button>
       <p>{numPlanets} planet(s) are making pizza trips.</p>
     </div>

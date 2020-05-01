@@ -25,7 +25,7 @@ function WizardContainer() {
         (cap: {WIZARD_CAP})
       </p>
       <button className="button" onClick={() => handleClick()}>
-        <img className="img" src={Wizard} />
+        <img className="img" alt="Cheese Wizard" src={Wizard} />
       </button>
       <p>{numWizards} wizard(s) are casting cheezy spells.</p>
     </div>

@@ -31,7 +31,7 @@ function wizardCastsSpells({ numWizards, makePizza }) {
 function rocketMakesTrips({ numPlanets, makePizza }) {
   if (numPlanets > 0) {
     planetIntervals.forEach(clearTimeout);
-    const time = TIME_TARGET - 10 * numPlanets;
+    const time = TIME_TARGET - 100 * numPlanets;
     const repeat2 = setInterval(() => makePizza(), time);
     planetIntervals.push(repeat2);
   }
