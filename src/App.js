@@ -11,7 +11,7 @@ function App() {
     <Provider store={store}>
       <div>
         <Header />
-        <EverythingContainer />
+        <EverythingContainer /> {/*testing*/}
         <Footer />
       </div>
     </Provider>
